@@ -1,0 +1,18 @@
+[
+    { 
+        "name": "accountId", 
+        "type": "string"
+    },
+    {
+        "name": "symbol", 
+        "type": "string"
+    },
+    {
+        "name": "headquarters",
+        "type": "string"
+    },
+    { 
+        "name": "credits",
+        "type": "number"
+    }
+]

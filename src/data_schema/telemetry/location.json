@@ -1,0 +1,22 @@
+[
+    {
+        "name": "systemSymbol",
+        "type": "string"
+    },
+    {
+        "name": "symbol",
+        "type": "string"
+    },
+    {
+        "name": "type",
+        "type": "string"
+    },
+    {
+        "name": "x",
+        "type": "number"
+    },
+    {
+        "name": "y",
+        "type": "number"
+    }
+]
