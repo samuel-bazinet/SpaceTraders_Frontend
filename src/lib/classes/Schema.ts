@@ -9,4 +9,4 @@ class TelemetrySchema {
     }
 }
 
-export {TelemetrySchema};
+export { TelemetrySchema };
