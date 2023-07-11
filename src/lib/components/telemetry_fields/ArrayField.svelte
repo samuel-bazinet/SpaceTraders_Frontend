@@ -2,7 +2,6 @@
 	import MapField from './MapField.svelte';
 
 	export let field: JSON;
-	export let parentName: string;
 </script>
 
 <ul>
