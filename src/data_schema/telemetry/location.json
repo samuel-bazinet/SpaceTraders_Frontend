@@ -18,5 +18,43 @@
     {
         "name": "y",
         "type": "number"
+    },
+    {
+        "name": "orbitals",
+        "type": "array",
+        "content": {
+            "type": "map",
+            "content": {
+                "keyType": "string",
+                "valueType": "string"
+            }
+        }
+    },
+    {
+        "name": "traits",
+        "type": "array",
+        "content": {
+            "type": "map",
+            "content": {
+                "keyType": "string",
+                "valueType": "string"
+            }
+        }
+    },
+    {
+        "name": "chart",
+        "type": "map",
+        "content": {
+            "keyType": "string",
+            "valueType": "string"
+        }
+    },
+    {
+        "name": "faction",
+        "type": "map",
+        "content": {
+            "keyType": "string",
+            "valueType": "string"
+        }
     }
 ]

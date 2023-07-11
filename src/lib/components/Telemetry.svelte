@@ -2,6 +2,7 @@
     import * as fs from 'fs';
     import * as path from 'path';
     import { TelemetrySchema } from '\$lib/classes/Schema';
+    import Fields from './telemetry_fields/Fields.svelte';
 
     export let telemetry_fields: TelemetrySchema[] = [];
 
@@ -16,14 +17,6 @@
 </script>
 <ul>
 {#each telemetry_fields as item}
-    <li>{item.telemetry_name}</li>
-    <ul>
-        {#each item.telemetry_fields as field}
-            <li><div>
-                name: {field["name"]}<br/>
-                type: {field["type"]}
-            </div></li>
-        {/each}
-    </ul>
+    <Fields item={item}/>
 {/each}
 </ul>
