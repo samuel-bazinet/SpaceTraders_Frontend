@@ -6,7 +6,7 @@
 
 <ul>
 	<li>
-		Key: {field['keyType']}
+		Key type: {field['keyType']}
 	</li>
 	{#if field['keyType'] == 'array'}
 		<ArrayField field={field['content']} />
@@ -14,7 +14,7 @@
 		<svelte:self field={field['content']} />
 	{/if}
 	<li>
-		Value: {field['valueType']}
+		Value type: {field['valueType']}
 	</li>
 	{#if field['valueType'] == 'array'}
 		<ArrayField field={field['content']} />
