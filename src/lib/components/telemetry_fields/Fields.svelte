@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { TelemetrySchema } from '$lib/classes/Schema';
+	import type { TelemetryStoreType } from '$lib/stores/TelemetryStore';
 	import { camelToSpaced } from '$lib/helpers/NameHelpers';
 	import { telemetryStore } from '$lib/stores/TelemetryStore';
 	import ArrayField from './ArrayField.svelte';
@@ -7,7 +8,7 @@
 
 	export let item: TelemetrySchema;
 
-	let fieldStore: Map<string, string>;
+	let fieldStore: TelemetryStoreType;
 
 	telemetryStore.subscribe((value) => {
 		if (value) {
@@ -15,9 +16,9 @@
 		}
 	});
 
-	const getValue = (fieldName: string): string => {
+	const getValue = (fieldName: string): string | number => {
 		if (fieldStore) {
-			return fieldStore.get(fieldName) || 'no info';
+			return (fieldStore.get(fieldName) as string | number) || 'no info';
 		} else {
 			return 'no store';
 		}
@@ -29,13 +30,15 @@
 	<ul>
 		{#each item.telemetry_fields as field}
 			<li class="parent">
-				<h3>{camelToSpaced(field['name'])}</h3>
-				{#if field['type'] == 'array'}
-					<ArrayField field={field['content']} />
-				{:else if field['type'] == 'map'}
-					<MapField field={field['content']} />
+				<h3>{camelToSpaced(field.name)}</h3>
+				{#if field.content}
+					{#if field.type == 'array'}
+						<ArrayField field={field['content']} fieldName={item.telemetry_name + field.name} />
+					{:else if field.type == 'map'}
+						<MapField field={field['content']} fieldName={item.telemetry_name + field.name} data={undefined}/>
+					{/if}
 				{:else}
-					<h4>Value: {getValue(field['name'])}</h4>
+					<h4>Value: {getValue(item.telemetry_name + field.name)}</h4>
 				{/if}
 			</li>
 		{/each}

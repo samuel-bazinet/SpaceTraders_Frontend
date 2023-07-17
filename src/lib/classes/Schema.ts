@@ -1,12 +1,11 @@
+import type { FieldSchema } from "./FieldSchema";
 
-class TelemetrySchema {
+export class TelemetrySchema {
     telemetry_name: string;
-    telemetry_fields: JSON;
+    telemetry_fields: FieldSchema[];
 
-    constructor(name: string, fields: JSON) {
+    constructor(name: string, fields: FieldSchema[]) {
         this.telemetry_name = name;
         this.telemetry_fields = fields;
     }
 }
-
-export { TelemetrySchema };

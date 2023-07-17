@@ -25,7 +25,6 @@
         "content": {
             "type": "map",
             "content": {
-                "keyType": "string",
                 "valueType": "string"
             }
         }
@@ -36,7 +35,6 @@
         "content": {
             "type": "map",
             "content": {
-                "keyType": "string",
                 "valueType": "string"
             }
         }
@@ -45,7 +43,6 @@
         "name": "chart",
         "type": "map",
         "content": {
-            "keyType": "string",
             "valueType": "string"
         }
     },
@@ -53,7 +50,6 @@
         "name": "faction",
         "type": "map",
         "content": {
-            "keyType": "string",
             "valueType": "string"
         }
     }

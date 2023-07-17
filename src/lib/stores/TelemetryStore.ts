@@ -1,4 +1,5 @@
-import type { TelemetrySchema } from "$lib/classes/Schema";
 import { writable, type Writable } from "svelte/store";
 
-export const telemetryStore: Writable<Map<string, string>> = writable(new Map());
+export type TelemetryStoreType = Map<string, number | string | string[] | Map<string, string> | Map<string, string>[] >;
+
+export const telemetryStore: Writable<TelemetryStoreType> = writable(new Map());

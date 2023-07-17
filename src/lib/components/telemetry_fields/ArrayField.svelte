@@ -1,16 +1,49 @@
 <script lang="ts">
+	import type { ContentSchema } from '$lib/classes/ContentSchema';
+	import { telemetryStore, type TelemetryStoreType } from '$lib/stores/TelemetryStore';
 	import MapField from './MapField.svelte';
 
-	export let field: JSON;
+	export let field: ContentSchema;
+	export let fieldName: string;
+
+	let fieldStore: TelemetryStoreType;
+
+	telemetryStore.subscribe((value) => {
+		if (value) {
+			fieldStore = value;
+		}
+	});
+
+	const getStringValue = (fieldName: string): string[] => {
+		if (fieldStore) {
+			return (fieldStore.get(fieldName) as string[]) || ['no info'];
+		} else {
+			return ['no store'];
+		}
+	};
+
+	const getMapValue = (fieldName: string): Map<string, string>[] => {
+		if (fieldStore) {
+			return (fieldStore.get(fieldName) as Map<string, string>[]) || ['no info'];
+		} else {
+			console.warn(`no field store for Map with name ${fieldName}`);
+			return [new Map()];
+		}
+	};
 </script>
 
-<ul>
-	<li>
-		type: {field['type']}
-	</li>
-	{#if field['type'] == 'array'}
-		<svelte:self field={field['content']} />
-	{:else if field['type'] == 'map'}
-		<MapField field={field['content']} />
+{#if field.content}
+	{#if field.type == 'map'}
+		{#each getMapValue(fieldName) as item}
+			<MapField field={undefined} {fieldName} data={item} />
+		{/each}
 	{/if}
-</ul>
+{:else}
+	<ul>
+		{#each getStringValue(fieldName) as item}
+			<li>
+				{item}
+			</li>
+		{/each}
+	</ul>
+{/if}
