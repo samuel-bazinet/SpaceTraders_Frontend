@@ -1,28 +1,22 @@
 <script lang="ts">
-	import * as fs from 'fs';
-	import * as path from 'path';
-	import { TelemetrySchema } from '$lib/classes/Schema';
-    import { populateStores } from '$lib/helpers/PopulateSchemaStores';
-	import Fields from './telemetry_fields/Fields.svelte';
+	import type { TelemetrySchema } from "$lib/classes/Schema";
+	import { populateStores } from "$lib/helpers/PopulateSchemaStores";
+	import Fields from "./telemetry_fields/Fields.svelte";
 
-	export let telemetry_fields: TelemetrySchema[] = [];
+	export let telemetry_fields: TelemetrySchema[];
 
-	const schema: any = import.meta.glob('../../../src/data_schema/telemetry/*.*');
-	for (const modulePath in schema) {
-		telemetry_fields.push(
-			new TelemetrySchema(
-				modulePath.split('/').slice(-1)[0].split('.')[0],
-				JSON.parse(fs.readFileSync(path.resolve('./src/.' + modulePath), 'utf-8'))
-			)
-		);
-	}
-
-    populateStores(telemetry_fields);
+	populateStores(telemetry_fields);
 
 </script>
 
-<ul>
+<div class="flex-container">
 	{#each telemetry_fields as item}
 		<Fields {item} />
 	{/each}
-</ul>
+</div>
+
+<style>
+	.flex-container {
+		display: flex;
+	}
+</style>

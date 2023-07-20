@@ -43,26 +43,31 @@
 		{/each}
 	</table>
 {:else if data}
-	<table>
+	{#each Array.from(data) as row}
 		<tr>
-			<th>Key</th>
-			<th>Value</th>
+			<td>
+				{row[0]}
+			</td>
+			<td>
+				{row[1]}
+			</td>
 		</tr>
-		{#each Array.from(data) as row}
-			<tr>
-				<td>
-					{row[0]}
-				</td>
-				<td>
-					{row[1]}
-				</td>
-			</tr>
-		{/each}
-	</table>
+	{/each}
 {/if}
 
 <style>
 	table {
 		margin: 1rem;
+	}
+	table,
+	th,
+	td {
+		border: 0.5px solid;
+		border-collapse: collapse;
+	}
+
+	th,
+	td {
+		padding: 0.5rem;
 	}
 </style>

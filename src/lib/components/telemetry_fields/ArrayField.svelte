@@ -34,9 +34,15 @@
 
 {#if field.content}
 	{#if field.type == 'map'}
-		{#each getMapValue(fieldName) as item}
-			<MapField field={undefined} {fieldName} data={item} />
-		{/each}
+		<table>
+			<tr>
+				<th>Key</th>
+				<th>Value</th>
+			</tr>
+			{#each getMapValue(fieldName) as item}
+				<MapField field={undefined} {fieldName} data={item} />
+			{/each}
+		</table>
 	{/if}
 {:else}
 	<ul>
@@ -47,3 +53,17 @@
 		{/each}
 	</ul>
 {/if}
+
+<style>
+	table {
+		margin: 1rem;
+	}
+	table,
+	th {
+		border: 0.5px solid;
+		border-collapse: collapse;
+	}
+	th {
+		padding: 0.5rem;
+	}
+</style>

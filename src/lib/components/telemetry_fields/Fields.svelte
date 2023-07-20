@@ -48,8 +48,9 @@
 <style>
 	.parent {
 		border: 1px solid black;
+		border-radius: 1rem;
 		margin: 1rem;
-		max-width: 70%;
+		max-width: 80%;
 		list-style-type: none;
 	}
 	h2,

@@ -19,12 +19,10 @@ export const populateStores = (input: TelemetrySchema[]) => {
 }
 
 const addStringFieldToStore = (input: string) => {
-    console.log({input})
     telemetryStore.update((store) => store.set(input, "default"))
 }
 
 const addArrayFieldToStore = (input: string) => {
-    console.log({input})
     const testMap: Map<string, string> = new Map();
     testMap.set("key1", "value1");
     testMap.set("key2", "value2");
@@ -35,7 +33,6 @@ const addArrayFieldToStore = (input: string) => {
 }
 
 const addMapFieldToStore = (input: string) => {
-    console.log({input});
     const testMap: Map<string, string> = new Map();
     testMap.set("key1", "value1");
     testMap.set("key2", "value2");
